@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(221, 221, 221);
+}
+h1 {
+    text-align: center;
+    color: #61a5e9;
+    margin-top: 20px;
+}
+.search-area input {
+    background-color:#646464;
+    background-image: url('../images/search.png');
+    background-size: 20px;
+    background-position-x: 10px;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    width:250px;
+    height:35px;
+    border-radius:15px;
+    border:0;
+    outline:0;
+    padding-left:30px;
+    transition: all .3s;
+}
+::placeholder {
+    color:#8e9fb3;
+    font-size: 20px;
+    text-align: center;
+}
+.search-area input:focus {
+    width:300px;
+    background-color: rgb(218, 216, 216);
+}
+
+table{
+    text-align: center;
+    
+    
+}
+th{
+    color:#67788b;
+}
+td{
+    color:#A2B4C9;
+}
+.cadastro{
+    background-color:#43494E;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}    
+label{
+    margin-left: 30px;
+    color: #91b3da;
+    font-size: 20px;
+}
+.form-control{
+    background-color:#dfdede;
+    margin-left: 35px;
+    color: #164780;
+    width: 600px;
+    
+    
+}
