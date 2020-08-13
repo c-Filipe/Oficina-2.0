@@ -33,6 +33,7 @@ h1 {
 
 table{
     text-align: center;
+    margin-top: 30px;
     
     
 }
@@ -41,7 +42,19 @@ th{
 }
 td{
     color:#A2B4C9;
+    word-wrap: break-word;
+    
 }
+.menu{
+    margin-top: 50px;
+    margin-left: 20px;
+}
+.pesquisa{
+    margin-top: -40px;
+    margin-left: 280px;
+}
+
+/* FORMATAÇÃO DA PAGINA DE CADASTRO */
 .cadastro{
     background-color:#43494E;
     padding: 10px;

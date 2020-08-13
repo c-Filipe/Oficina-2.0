@@ -48,10 +48,50 @@ class OrcamentoDao {
         }
         return $lista;
     }
-    public function update(Orcamento $p){
+    public function update(Orcamento $o){
+        $sql = Conexao::getConn()->prepare("UPDATE orcamento SET
+            vendedor = :vendedor, cliente = :cliente, dataDoc = :dataDoc, 
+            hora = :hora , descricao = :descricao, valor_total = :valor_total WHERE id = :id");
+        $sql->bindValue(':cliente', $o->getCliente());
+        $sql->bindValue(':vendedor', $o->getVendedor());
+        $sql->bindValue(':dataDoc', $o->getData());
+        $sql->bindValue(':hora', $o->getHora());
+        $sql->bindValue(':descricao', $o->getDescricao());
+        $sql->bindValue(':valor_total', $o->getValorTotal());
+        $sql->bindValue(':id', $o->getId());
+        $sql->execute();
+
+        return true;
+
 
     }
     public function delete($id){
+        $sql = Conexao::getConn()->prepare("DELETE FROM orcamento WHERE id = :id");
+        $sql->bindValue(':id',$id);
+        $sql->execute();
 
+    }
+    public function findById($id){
+        $sql = Conexao::getConn()->prepare("SELECT * FROM orcamento WHERE id = :id");
+        $sql->bindValue(':id',$id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $data = $sql->fetch();
+
+            $o = new Orcamento();
+            $o->setId($data['id']);
+            $o->setVendedor($data['vendedor']);
+            $o->setCliente($data['cliente']);
+            $o->setData($data['dataDoc']);
+            $o->setHora($data['hora']);
+            $o->setDescricao($data['descricao']);
+            $o->setValorTotal($data['valor_total']);
+
+            return $o;
+        }
+        else{
+            return false;
+        }
     }
 }

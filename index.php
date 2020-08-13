@@ -1,6 +1,6 @@
 <?php
 
-  require 'models/Conexao.php';
+  
   require 'models/OrcamentoDao.php';
   
 
@@ -22,11 +22,16 @@
   <body>
 
     <h1>Últimos Orçamentos</h1>
-    <div class="search-area">
-      <form method="GET" action="">
-        <input type="search" placeholder="Pesquisar Orçamento" name="pesquisar" />
-      </form> 
-    </div>  
+      <div class="menu">
+        <a href="cadastro.php">        
+            <button type="button" class="botao btn btn-primary btn-lg">Cadastrar Orçamento</button>
+        </a>    
+        <div class=" pesquisa search-area">
+          <form method="GET" action="">
+            <input type="search" placeholder="Pesquisar Orçamento" name="pesquisar" />
+          </form> 
+        </div>
+      </div>    
 
     <table class="table table-hover table-dark">
       <thead>
@@ -60,8 +65,8 @@
               <a href='editar.php?id=<?=$atributos->getId();?>'>
                 <button type="button" class="btn btn-secondary">EDITAR</button> 
               <a>
-              <a href='excluir.php?id=<?=$atributos->getId();?>'>
-                <button type="button" class="btn btn-danger"  onclick="return confirm('Tem certeza que deseja excluir esse usuário ?')">EXCLUIR</button> 
+              <a href='actions/excluir.php?id=<?=$atributos->getId();?>'>
+                <button type="button" class="btn btn-danger"  onclick="return confirm('ATENÇÃO! Esse orçamento será excluído permanentemente.')">EXCLUIR</button> 
               <a>
 
             </td>
@@ -70,11 +75,9 @@
         
         
       </tbody>
-    </table> 
-    <a href="cadastro.php">        
-        <button type="button" class="btn btn-primary btn-lg">Cadastrar Orçamento</button>
-      
-    </a>    
+    </table>
+     
+    
             
 
   </body>
