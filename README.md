@@ -18,13 +18,13 @@
 ## Imagens do projeto
 
 ### Index
-<img src="assets/images/index.jpg" alt="index" width="800">
+<img src="https://github.com/c-Filipe/Oficina-2.0/blob/master/assets/images/index.JPG" alt="index" width="800">
 
 ### Tela de cadastro
-<img src="assets/images/cadastro.jpg" alt="cadastro" width="800">
+<img src="https://github.com/c-Filipe/Oficina-2.0/blob/master/assets/images/cadastro.JPG" alt="cadastro" width="800">
 
 ### Tela de busca
-<img src="assets/images/busca.jpg" alt="busca" width="800">
+<img src="https://github.com/c-Filipe/Oficina-2.0/blob/master/assets/images/busca.JPG" alt="busca" width="800">
 
 ## Como rodar a aplicação :arrow_forward:
 
