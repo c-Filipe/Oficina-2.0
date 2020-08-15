@@ -27,13 +27,19 @@
             <button type="button" class="botao btn btn-primary btn-lg">Cadastrar Orçamento</button>
         </a>    
         <div class=" pesquisa search-area">
-          <form method="GET" action="">
-            <input type="search" placeholder="Pesquisar Orçamento" name="pesquisar" />
+          <form method="GET" action="busca.php">
+            
+            <input type="search" placeholder="Pesquisar Orçamento por " name="p"  />
+            <select name='filtro'>
+              <option value="cliente" > Cliente </option>
+              <option value="vendedor" > Vendedor </option >
+            </select>
           </form> 
         </div>
       </div>    
 
     <table class="table table-hover table-dark">
+     
       <thead>
         <tr>
           <th scope="col">Id</th>

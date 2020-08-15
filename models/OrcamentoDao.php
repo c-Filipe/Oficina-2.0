@@ -25,7 +25,7 @@ class OrcamentoDao {
     }
     public function read(){
         $lista = [];
-        $sql = Conexao::getConn()->query("SELECT * FROM orcamento");
+        $sql = Conexao::getConn()->query("SELECT * FROM orcamento ORDER BY dataDoc,hora DESC");
         if($sql->rowCount() > 0){
             $data = $sql->fetchAll();
 
@@ -93,5 +93,37 @@ class OrcamentoDao {
         else{
             return false;
         }
+    }
+    public function busca($termo,$filtro){
+        $lista = [];
+
+        if(!empty($termo)){
+            $sql = Conexao::getConn()->prepare("SELECT * FROM orcamento WHERE $filtro  LIKE :termo ORDER BY dataDoc,hora DESC");
+            $sql->bindValue(':termo', '%'.$termo.'%');
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+                $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($data as $item){
+                    $o = new Orcamento();
+                    $o->setId($item['id']);
+                    $o->setVendedor($item['vendedor']);
+                    $o->setCliente($item['cliente']);
+                    $o->setData($item['dataDoc']);
+                    $o->setHora($item['hora']);
+                    $o->setDescricao($item['descricao']);
+                    $o->setValorTotal($item['valor_total']);
+                    
+                    $lista[] = $o;
+
+                }
+
+            }
+
+        }
+        return $lista;
+        
+
     }
 }

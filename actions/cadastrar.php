@@ -34,7 +34,7 @@ if($cliente && $vendedor && $descricao && $valorTotal){
     
 
     $orcamentoDao->create($novoOrcamento);
-
+   
     header("Location: ../index.php");
     exit;
 }
