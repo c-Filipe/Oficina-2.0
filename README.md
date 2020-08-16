@@ -13,7 +13,11 @@
 - [X] Editar orçamento
 - [X] Excluir orçamento
 - [X] Realizar busca por nome do cliente ou vendedor
-- [ ] Realizar busca por data
+- [X] Realizar busca por data
+
+## Como rodar a aplicação :arrow_forward:
+
+Após clonar ou fazer o download desse repositorio, basta acessar seu banco de dados via PHPMyAdmin, MySQL Workbench ou seu ambiente de desenvolvimento preferido e importar o arquivo oficinaDB.sql .
 
 ## Imagens do projeto
 
@@ -28,5 +32,5 @@
 
 ## Como rodar a aplicação :arrow_forward:
 
-Após clonar ou fazer o download desse repositorio, basta acessar seu banco de dados via PHPMyAdmin, MySQL Workbench ou seu ambiente de desenvolvimento preferido e importar o arquivo oficinaDB.sql .
+Após clonar ou fazer o download desse repositorio, basta acessar seu banco de dados via PHPMyAdmin, MySQL Workbench ou seu ambiente de desenvolvimento preferido e importar o arquivo oficinaDB.sql.
 

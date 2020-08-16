@@ -126,4 +126,40 @@ class OrcamentoDao {
         
 
     }
+    public function filtroEntreDatas($filtro,$busca,$dataInicial,$dataFinal){
+        $lista = [];
+
+            $sql = Conexao::getConn()->prepare("SELECT * FROM orcamento where $filtro  LIKE :busca and dataDoc between :dataInicial and :dataFinal ORDER BY dataDoc,hora DESC");
+           
+            $sql->bindValue(':busca', '%'.$busca.'%');
+            $sql->bindValue(':dataInicial', $dataInicial);
+            $sql->bindValue(':dataFinal', $dataFinal);
+            
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+            $data = $sql->fetchAll();
+
+            foreach($data as $item){
+
+
+
+                $o = new Orcamento();
+                $o->setId($item['id']);
+                $o->setVendedor($item['vendedor']);
+                $o->setCliente($item['cliente']);
+                $o->setData($item['dataDoc']);
+                $o->setHora($item['hora']);
+                $o->setDescricao($item['descricao']);
+                $o->setValorTotal($item['valor_total']);
+                
+                $lista[] = $o;
+            }
+
+        }
+
+        
+        return $lista;
+    }
+    
 }

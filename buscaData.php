@@ -1,22 +1,38 @@
 <?php
 
-
-require 'models/OrcamentoDao.php';
-
-
-$orcamentoDao = new OrcamentoDao();
+  
+    require 'models/OrcamentoDao.php';
 
 
-$busca = filter_input(INPUT_GET, 'p');
-$filtro = filter_input(INPUT_GET, 'filtro');
+    $orcamentoDao = new OrcamentoDao;
 
-if (empty($busca)) {
-    header("Location: index.php");
-    exit;
-}
-$buscaLista = $orcamentoDao->busca($busca, $filtro);
+    $busca = filter_input(INPUT_POST,'busca');
+    $filtro = filter_input(INPUT_POST,'filtro');
+    $dataInicial = filter_input(INPUT_POST,'dataInicial');
+    $dataFinal = filter_input(INPUT_POST,'dataFinal');
 
+    
 
+    $dataInicial = implode('-', array_reverse(explode('/', $dataInicial)));
+    $dataFinal = implode('-', array_reverse(explode('/', $dataFinal)));
+
+    if (empty($dataInicial)) {
+        echo "<script> alert('Preencha o campo data inicial para poder filtrar sua busca') </script>";
+        echo "<script> history.back() </script>";
+        exit;
+    }
+    if (empty($dataFinal)) {
+        echo "<script> alert('Preencha o campo data final para poder filtrar sua busca') </script>";
+        echo "<script> history.back() </script>";
+        exit;
+    }
+
+    // Pesquisa entre datas 
+    
+       $buscaLista =  $orcamentoDao->filtroEntreDatas($filtro,$busca,$dataInicial,$dataFinal);
+        
+    
+    
 ?>
 <html>
 
@@ -32,7 +48,8 @@ $buscaLista = $orcamentoDao->busca($busca, $filtro);
 
 <body>
 
-    <h1> Busca por <?=$filtro;?>: <em><?= $busca; ?></em></h1><br>
+    <h1> Busca por <?=$filtro;?>: <em><?= $busca; ?></em> entre as datas
+     <br/> <em><?=date('d/m/Y',  strtotime($dataInicial));?> e <?=date('d/m/Y',  strtotime($dataFinal));?>  </em></h1>
     
 
     <div class="menu">
@@ -44,9 +61,10 @@ $buscaLista = $orcamentoDao->busca($busca, $filtro);
 
             <span class="noResult">Nenhum resultado encontrado</span>
             
+            
+            
 
         <?php endif ?>  
-
         <?php if (count($buscaLista) > 0) : ?>
             <h3>Filtrar busca por data</h3>
             <div class="filtro container d-flex justify-content-center">
@@ -57,7 +75,7 @@ $buscaLista = $orcamentoDao->busca($busca, $filtro);
                     
                     <input type="text" id="dataInicial" name="dataInicial" placeholder="Data Inicial" class="data">
                     <p>Entre</p>
-                    
+                   
                     <input type="text" id="dataFinal" name="dataFinal" placeholder="Data Final" class="data">
                     <input type="submit" value="Filtrar">
 
