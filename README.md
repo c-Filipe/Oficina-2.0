@@ -30,7 +30,5 @@ Após clonar ou fazer o download desse repositorio, basta acessar seu banco de d
 ### Tela de busca
 <img src="https://github.com/c-Filipe/Oficina-2.0/blob/master/assets/images/busca.JPG" alt="busca" width="800">
 
-## Como rodar a aplicação :arrow_forward:
 
-Após clonar ou fazer o download desse repositorio, basta acessar seu banco de dados via PHPMyAdmin, MySQL Workbench ou seu ambiente de desenvolvimento preferido e importar o arquivo oficinaDB.sql.
 
