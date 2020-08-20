@@ -1,3 +1,8 @@
+<?php
+session_start();
+    require 'models/Conexao.php';
+    require 'models/OrcamentoDao.php';
+?>
 <html>
     <head>
         <title>Oficina 2.0 - Cadastro</title>
@@ -8,9 +13,18 @@
         
     </head>
     <body>
-        
+      
         <div class="cadastro">
             <h1>Cadastrar Orçamento</h1>
+            <?php if(!empty($_SESSION['msg'])): ?>
+                <!-- <div> -->
+                <?=$_SESSION['msg'];?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                    <?=$_SESSION['msg']= '';?>
+            <?php endif; ?>  
             <form method="POST" action="actions/cadastrar.php">
                 <div class="form-group">
                     <label for="cliente">Cliente</label>
@@ -33,10 +47,11 @@
                 <a href="index.php" class="btn btn-secondary btn-lg">Voltar</a> 
             </form>
         </div>
-
+              
         <!-- Mascára para o valor monetario  -->
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/jquery.maskMoney.js" type="text/javascript"></script>
+
         <script type="text/javascript">
             $(function(){
             $("#total").maskMoney({symbol:'R$ ', 
@@ -44,6 +59,6 @@
             })
         </script>
        
-
+	  <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

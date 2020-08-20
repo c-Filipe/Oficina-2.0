@@ -25,7 +25,7 @@ class OrcamentoDao {
     }
     public function read(){
         $lista = [];
-        $sql = Conexao::getConn()->query("SELECT * FROM orcamento ORDER BY dataDoc,hora DESC");
+        $sql = Conexao::getConn()->query("SELECT * FROM orcamento ORDER BY dataDoc DESC, hora DESC");
         if($sql->rowCount() > 0){
             $data = $sql->fetchAll();
 

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require '../models/Conexao.php';
 require '../models/OrcamentoDao.php';
 
@@ -19,6 +19,8 @@ $valorTotal = filter_input(INPUT_POST,'total');
 
 
 
+
+
 if($cliente && $vendedor && $descricao && $valorTotal){
     $novoOrcamento = new Orcamento();
     $novoOrcamento->setCliente($cliente);
@@ -34,12 +36,12 @@ if($cliente && $vendedor && $descricao && $valorTotal){
     
 
     $orcamentoDao->create($novoOrcamento);
-   
+    $_SESSION['msg'] = " <div class='alert alert-success alert-dismissible fade show' role='alert'>Cadastrado com sucesso! ";
     header("Location: ../index.php");
     exit;
 }
 else{
-    echo "<script> alert('Preencha todos os campos para cadastrar') </script>";
+    $_SESSION['msg'] = " <div class='alert alert-danger alert-dismissible fade show' role='alert'>Preencha todos os campos para cadastrar o orçamento! ";
     echo "<script> history.back() </script>";
 }
 ?>

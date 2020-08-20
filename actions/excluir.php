@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require '../models/Conexao.php';
 require '../models/OrcamentoDao.php';
 
@@ -12,6 +12,7 @@ $id = filter_input(INPUT_GET,'id');
         $orcamentoDao->delete($id);
 
     }
-   
+    $_SESSION['msg'] = " <div class='alert alert-danger alert-dismissible fade show' role='alert'>Orçamento ". $id ." excluído! ";
+    
     header('location: ../index.php');
     exit;

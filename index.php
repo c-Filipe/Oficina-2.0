@@ -1,6 +1,6 @@
 <?php
+  session_start();
 
-  
   require 'models/OrcamentoDao.php';
   
 
@@ -20,7 +20,6 @@
 
   </head>
   <body>
-
     <h1>Últimos Orçamentos</h1>
       <div class="menu">
         <a href="cadastro.php">        
@@ -37,7 +36,15 @@
           </form> 
         </div>
       </div>    
-
+      <?php if(!empty($_SESSION['msg'])): ?>
+        <!-- <div> -->
+           <?=$_SESSION['msg'];?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+              <?=$_SESSION['msg']= '';?>
+      <?php endif; ?>  
     <table class="table table-hover table-dark">
      
       <thead>
@@ -84,7 +91,8 @@
     </table>
      
     
-            
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	  <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>  
